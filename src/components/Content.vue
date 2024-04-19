@@ -75,6 +75,21 @@
         </div>
       </div>
     </div>
+    <div class="modal" v-if="tiempo_perdido">
+      <div class="modal-content">
+        <p class="correcta">¡Has pertido todas las vidas!</p>
+        <p class="correcta">Debes esperar 15 segundos para retomar el juego</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="80px" height="80px" fill="currentColor" class="bi bi-emoji-frown-fill" viewBox="0 0 16 16">
+          <path color="rgb(177, 135, 0)" d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m-2.715 5.933a.5.5 0 0 1-.183-.683A4.5 4.5 0 0 1 8 9.5a4.5 4.5 0 0 1 3.898 2.25.5.5 0 0 1-.866.5A3.5 3.5 0 0 0 8 10.5a3.5 3.5 0 0 0-3.032 1.75.5.5 0 0 1-.683.183M10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8"/>
+          <label color="black" for="">{{ time }}</label>
+        </svg>
+      </div>
+    </div>
+    <div class="modal" v-if="x">
+      <div class="modal-content">
+        <p class="correcta">La respuesta no puede ser vacio</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -86,6 +101,7 @@ export default {
   data() {
     const nivel = ref(1)
     const cantidad_monedas = ref(10)
+    const time = ref('')
     return {
       images: [],
       correctAnswer: 'respuesta_correcta',
@@ -100,10 +116,13 @@ export default {
       nivel,
       cantidad_monedas,
       cambiar:false,
+      time,
       opcionCancelar:false,
       opcionAceptar:false,
       seleccionarPista:[],
-      pista:false
+      pista:false,
+      tiempo_perdido:false,
+      x:false
     };
   },
   mounted() {
@@ -118,7 +137,7 @@ export default {
         { category: 'food', answers: ['comida', 'plato', 'platos'] },
         { category: 'kitchen', answers: ['cocina'] },
         { category: 'restaurant', answers: [ 'restaurante','restaurantes',] },
-        { category: 'vegetables', answers: ['vegetales','vegetal'] },
+        { category: 'vegetables', answers: ['vegetales','vegetal','verduras','verdura'] },
         { category: 'fruits', answers: ['frutas','fruta'] },
         { category: 'childrens', answers: ['niños','niño'] },
         { category: 'numbers', answers: ['numeros','numero'] },
@@ -164,7 +183,12 @@ export default {
 
     checkAnswer() {
       const userInputLowerCase = this.userInput.toLowerCase();
-      if (this.possibleAnswers.some(answer => answer.toLowerCase() === userInputLowerCase)) {
+      if(this.userInput === ''){
+        this.x = true
+        setTimeout(() => {
+          this.x = false;
+        }, 2000);
+      }else if(this.possibleAnswers.some(answer => answer.toLowerCase() === userInputLowerCase)) {
         this.showCustomAlert(); // Llamar al método showCustomAlert en lugar de alert
         this.fetchImagesByRandomCategory();
         this.userInput = ''
@@ -177,28 +201,30 @@ export default {
           this.showCustomAlertIncorrect();
           this.vidas_corazon()
           this.fetchImagesByRandomCategory();
-          this.vidauno = true
-          this.vidados = true
-          this.vidatres = true
+          this.tiempo_perdido=true
+          this.vidasPerdidas()
         }else{
           this.showCustomAlertIncorrect();
           this.vidas_corazon()
         }
-
-
       }
     },
     showCustomAlert() {
       this.showModal = true;
       setTimeout(() => {
         this.showModal = false;
-      }, 2000); // Cierra la alerta después de 2 segundos
+      }, 2000);
     },
     showCustomAlertIncorrect() {
       this.showModalIncorrect = true;
       setTimeout(() => {
         this.showModalIncorrect = false;
-      }, 2000); // Cierra la alerta después de 2 segundos
+      }, 2000);
+    },
+    vidasPerdidas(){
+      this.time = setTimeout(() => {
+        this.tiempo_perdido = false;
+      }, 15000);
     },
     vidas_corazon(){
       if(this.vidas === 2){
@@ -242,6 +268,7 @@ export default {
   height: 60px;
   margin-right: 7px;
   background-color: rgb(31, 138, 165);
+  background-color: rgb(177, 135, 0);
   color: white;
 }
 .botones-seleccion .check{
