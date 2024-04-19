@@ -67,7 +67,8 @@
 
 .instrucciones {
   width: 80%;
-  margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+  margin-top: 20px;
+  color: antiquewhite;
 }
 
 .instrucciones h3 {
