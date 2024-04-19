@@ -1,37 +1,37 @@
 <template>
   <div class="container">
-    <div class="titulo">
-      <div class="monedas"><svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" fill="currentColor" class="bi bi-currency-exchange" viewBox="0 0 16 16">
-        <path color="rgb(221, 159, 25)" d="M0 5a5 5 0 0 0 4.027 4.905 6.5 6.5 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05q-.001-.07.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.5 3.5 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98q-.004.07-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5m16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0m-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674z"/>
-      </svg>
-      <h2 class="contenido-titulo">{{ cantidad_monedas }}</h2></div>
-      <h1 class="contenido-titulo"><b>Nivel: <label for="">{{ nivel }}</label> </b></h1>
-      <img v-if="vidauno" class="corazon" src="../assets/animal/corazon.png" alt="Corazon">
-      <img v-if="vidados" class="corazon" src="../assets/animal/corazon.png" alt="Corazon">
-      <img v-if="vidatres" class="corazon" src="../assets/animal/corazon.png" alt="Corazon">
-    </div>
-    <div class="contenido-principal">
-      <div class="options">
-        <button class="btn-option" @click="cambiarImagenes">
-          <svg xmlns="http://www.w3.org/2000/svg" width="60px" height="60px" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-            <path color="rgb(31, 138, 165)" fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
-            <path color="rgb(31, 138, 165)" d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
-          </svg>
-        </button>
-        <button  class="btn-option" @click="funcionPista">
-          <svg xmlns="http://www.w3.org/2000/svg" width="60px" height="60px" fill="currentColor" class="bi bi-lightbulb-fill" viewBox="0 0 16 16">
-            <path color="rgb(31, 138, 165)" d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5"/>
-          </svg>
-        </button>
+      <div class="titulo">
+        <div class="monedas"><svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" fill="currentColor" class="bi bi-currency-exchange" viewBox="0 0 16 16">
+          <path color="rgb(221, 159, 25)" d="M0 5a5 5 0 0 0 4.027 4.905 6.5 6.5 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05q-.001-.07.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.5 3.5 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98q-.004.07-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5m16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0m-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674z"/>
+        </svg>
+        <h2 class="contenido-titulo">{{ cantidad_monedas }}</h2></div>
+        <h1 class="contenido-titulo"><b>Nivel: <label for="">{{ nivel }}</label> </b></h1>
+        <img v-if="vidauno" class="corazon" src="../assets/animal/corazon.png" alt="Corazon">
+        <img v-if="vidados" class="corazon" src="../assets/animal/corazon.png" alt="Corazon">
+        <img v-if="vidatres" class="corazon" src="../assets/animal/corazon.png" alt="Corazon">
       </div>
-      <div class="grid-container">
-        <div class="grid-item" v-for="(image, index) in images" :key="index">
-          <img class="imagenes" :src="image.url" @click="selectImage(index)" />
+      <div class="contenido-principal">
+        <div class="options">
+          <button class="btn-option" @click="cambiarImagenes">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60px" height="60px" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+              <path color="rgb(31, 138, 165)" fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+              <path color="rgb(31, 138, 165)" d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+            </svg>
+          </button>
+          <button  class="btn-option" @click="funcionPista">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60px" height="60px" fill="currentColor" class="bi bi-lightbulb-fill" viewBox="0 0 16 16">
+              <path color="rgb(31, 138, 165)" d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5"/>
+            </svg>
+          </button>
         </div>
-        <input class="input-respuesta" v-model="userInput" type="text" placeholder="Ingresa tu respuesta" />
-        <button class="boton" @click="checkAnswer">Comprobar</button>
+        <div class="grid-container">
+          <div class="grid-item" v-for="(image, index) in images" :key="index">
+            <img class="imagenes" :src="image.url" @click="selectImage(index)" />
+          </div>
+          <input class="input-respuesta" v-model="userInput" type="text" placeholder="Ingresa tu respuesta" />
+          <button class="boton" @click="checkAnswer">Comprobar</button>
+        </div>
       </div>
-    </div>
     <div class="modal" v-if="showModal">
       <div class="modal-content">
         <p class="correcta">¡Respuesta correcta!</p>
@@ -280,14 +280,14 @@ export default {
 .container {
   height: 100%;
   width: 100%;
-  margin: 60px;
+  margin: 0px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 body,html{
-  margin: 0;
+  margin: 0px;
   padding: 0;
   width: 100%;
   background-color: rgb(50, 56, 59);
@@ -301,6 +301,7 @@ body,html{
   align-items: center;
   text-align: center;
   margin-bottom: 20px;
+  margin-left: 150px;
 }
 .contenido-titulo{
   margin-left: 30px;

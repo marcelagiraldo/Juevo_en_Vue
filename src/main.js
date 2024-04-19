@@ -1,5 +1,3 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -9,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Content from './components/Content.vue'
 
 const routes = [
-    { path: '/juego', component: Content, },
+    { path: '/content', component: Content, },
 ]
 
 const router = createRouter({
@@ -18,4 +16,3 @@ const router = createRouter({
 })
 
 createApp(App).use(router).mount('#app')
-
